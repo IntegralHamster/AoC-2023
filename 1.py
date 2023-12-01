@@ -55,7 +55,5 @@ for i in range(len(inp)):
         if inp[i].rfind(cancer) > right:
             right_digit = cancer_dict[cancer]
             right = inp[i].rfind(cancer)
-    ans = 10*left_digit + right_digit
-    sum2 += ans
-    print(inp[i], ans)
+    sum2 += 10*left_digit + right_digit
 print(sum2)
