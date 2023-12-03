@@ -1,5 +1,3 @@
-import re
-
 special_characters = "!@#$%^&*()-+?_=,<>/"
 
 def adjacency_check(array,i,j,length, num_lines):
@@ -21,7 +19,6 @@ def adjacency_check(array,i,j,length, num_lines):
 def substr_length(array,i,j):
     count = 0
     while True:
-
         if j+count >= len(array[i]):
             break
         if array[i][j+count] in special_characters or array[i][j+count] == ' ':
@@ -33,7 +30,6 @@ with open('input.txt') as f:
     lines = [line.strip().replace('.',' ') for line in f.readlines()]
 
 inp_len = len(lines)
-
 num_strings = []
 gear_positions = []
 
