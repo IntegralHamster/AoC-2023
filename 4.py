@@ -20,7 +20,6 @@ for line in lines:
         ans1 += 2**(len(overlap)-1)
     win_array.append([num, len(overlap)])
 
-print(win_array)
 copies = [1 for i in range(len(lines))]
 for i in range(len(lines)):
     if win_array[i][1] > 0:
@@ -28,5 +27,4 @@ for i in range(len(lines)):
             if i + j + 1 < len(copies):
                 copies[i+j+1] += copies[i]
 
-print(copies)
 print(ans1, sum(copies))
