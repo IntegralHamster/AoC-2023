@@ -42,5 +42,5 @@ loops_and_zeds = [find_loop(steps, maps, pos) for pos in current_position2]
 
 lcm = 1
 for i in range(len(loops_and_zeds)):
-    lcm = lcm * loops_and_zeds[i][-1] // math.gcd(lcm,loops_and_zeds[i][-1])
+    lcm = math.lcm(lcm, loops_and_zeds[i][-1])
 print(lcm)
