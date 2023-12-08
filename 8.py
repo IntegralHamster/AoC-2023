@@ -38,10 +38,8 @@ def find_loop(steps, maps, position):
             return z_log
 
 current_position2 = [i for i in maps.keys() if i[2] == 'A']
-loops_and_zeds = []
-for pos in current_position2:
-    loops_and_zeds.append(find_loop(steps, maps, pos))
-    print(pos)
+loops_and_zeds = [find_loop(steps, maps, pos) for pos in current_position2]
+
 lcm = 1
 for i in range(len(loops_and_zeds)):
     lcm = lcm * loops_and_zeds[i][-1] // math.gcd(lcm,loops_and_zeds[i][-1])
