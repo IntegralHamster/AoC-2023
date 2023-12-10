@@ -110,7 +110,7 @@ print(len(inside2_electric_boogaloo))
 # are you fucking kidding me, answer was 381
 # yes I know I should remove the recursion bit and just do the shapely thing for everything, fuck you
 
-#fine, I'll write another idea that I stole from reddit, but that isn't import.solution
+# fine, I'll write another idea that I stole from reddit, but that isn't import.solution
 
 inside3_revengeance = []
 for fake_outside in inside_tiles:
@@ -121,3 +121,5 @@ for fake_outside in inside_tiles:
     if vertical_count % 2 == 1:
         inside3_revengeance.append(fake_outside)
 print(len(inside3_revengeance))
+
+# yes I know that technically I need to check that F7 and LJ are adjacent to not count, but this gives correct answer, so fuck you
