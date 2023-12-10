@@ -33,6 +33,7 @@ while True:
         loop.append(next_loop)
 
 print(len(loop)//2)
+lines2 = lines.copy() # this is a surprise tool that will help us later
 for tile in loop:
     lines[tile[0]] = lines[tile[0]][:tile[1]] + '*' + lines[tile[0]][tile[1]+1:]
 
@@ -108,3 +109,15 @@ print(len(inside2_electric_boogaloo))
 
 # are you fucking kidding me, answer was 381
 # yes I know I should remove the recursion bit and just do the shapely thing for everything, fuck you
+
+#fine, I'll write another idea that I stole from reddit, but that isn't import.solution
+
+inside3_revengeance = []
+for fake_outside in inside_tiles:
+    vertical_count = 0
+    for loop_segment in loop:
+        if loop_segment[0] == fake_outside[0] and loop_segment[1] < fake_outside[1] and lines2[loop_segment[0]][loop_segment[1]] not in ['-', 'F', '7']:
+            vertical_count += 1
+    if vertical_count % 2 == 1:
+        inside3_revengeance.append(fake_outside)
+print(len(inside3_revengeance))
