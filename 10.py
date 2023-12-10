@@ -123,3 +123,14 @@ for fake_outside in inside_tiles:
 print(len(inside3_revengeance))
 
 # yes I know that technically I need to check that F7 and LJ are adjacent to not count, but this gives correct answer, so fuck you
+
+# while Nitro was making me want to shoot myself I decided to steal one more thing from reddit
+# behold, my shoelaces https://tinyurl.com/ShoelacesForNitro
+
+area = 0
+for i in range(len(loop)):
+    area += (loop[i-1][1] * loop[i][0] - loop[i-1][0] * loop[i][1])
+
+# are you Picking up what I'm putting down? https://tinyurl.com/DoYouNitro
+inside = area // 2 - len(loop) // 2 + 1
+print(inside)
