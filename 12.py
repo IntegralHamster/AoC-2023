@@ -54,10 +54,3 @@ for inp in lines:
 print(ans)
 
 # well at least i got part 1 on my own
-
-def run_along (line, pattern):
-    for char in line:
-
-
-
-
