@@ -45,37 +45,38 @@ import copy
 
 def processing2_electric_boogaloo (elves, current_elf, possible_robots):
     answer = []
-    possible_robots_copy = copy.deepcopy(possible_robots)
-    possible_robots_copy2 = copy.deepcopy(possible_robots)
+    possible_robots_copy = copy.deepcopy(possible_robots) # I don't trust copying lists
+    possible_robots_copy2 = copy.deepcopy(possible_robots) # and this one we will need to preserve range change
     for commands in elves[current_elf]:
-        # print(commands, possible_robots_copy)
         if ":" in commands:
             command, result = commands.split(':')
             command = command.replace('x', '0').replace('m', '1').replace('a', '2').replace('s', '3')
             if '>' in command:
                 part, target = command.split('>')
-                if possible_robots_copy[int(part)][0] < int(target):
-                    if possible_robots_copy[int(part)][1] < int(target):
+                if possible_robots_copy[int(part)][0] < int(target): # it only affects ranges if the target is within ranges, if it is below lowest range then it's always true
+                    if possible_robots_copy[int(part)][1] < int(target): # target outside of range, so condition would never be true
                         continue
                     else:
-                        possible_robots_copy[int(part)][0] = int(target) + 1
-                        possible_robots_copy2[int(part)][1] = int(target)
+                        possible_robots_copy[int(part)][0] = int(target) + 1 # target within range
+                        possible_robots_copy2[int(part)][1] = int(target) # this is the range for when condition isn't true
             elif '<' in command:
                 part, target = command.split('<')
-                if possible_robots_copy[int(part)][1] > int(target):
+                if possible_robots_copy[int(part)][1] > int(target): # same thing but in reverse
                     if possible_robots_copy[int(part)][0] > int(target):
                         continue
                     else:
                         possible_robots_copy[int(part)][1] = int(target) - 1
                         possible_robots_copy2[int(part)][0] = int(target)
+
             if result == 'A':
-                answer.append(copy.deepcopy(possible_robots_copy))
+                answer.append(copy.deepcopy(possible_robots_copy)) # result is A, all current ranges are possible
             elif result == 'R':
+                possible_robots_copy = copy.deepcopy((possible_robots_copy2)) # result is R, so all current ranges are impossible, take all others from copy and continue to next instruction
                 continue
             else:
                 for i in processing2_electric_boogaloo(elves, result, possible_robots_copy):
-                    answer.append(i)
-            possible_robots_copy = copy.deepcopy((possible_robots_copy2))
+                    answer.append(i) # result is another elf, get results from him
+            possible_robots_copy = copy.deepcopy((possible_robots_copy2)) # to continue we must take the range that wasn't fitting current condition
         else:
             if commands == 'A':
                 answer.append(copy.deepcopy(possible_robots_copy))
@@ -88,12 +89,8 @@ def processing2_electric_boogaloo (elves, current_elf, possible_robots):
 
 ans2 = 0
 for ranges in processing2_electric_boogaloo(elves, 'in', possible_robots_st):
-    print(ranges)
     total = 1
     for range in ranges:
         total *= range[1] - range[0] + 1
     ans2 += total
 print(ans2)
-
-# 167409079868000 - correct one
-# 167125936932000 - current one
