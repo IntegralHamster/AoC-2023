@@ -44,7 +44,7 @@ def move_east(square_rocks, round_rocks, num):
             break
     return
 
-# Except runtime of about a minute or two or three, but first thing printed is part 1 answer
+# Expect runtime of about a minute or two or three, but first thing printed is part 1 answer
 
 pattern = [copy.deepcopy(round_rocks)]
 cycle = 0
