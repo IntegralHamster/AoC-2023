@@ -29,9 +29,8 @@ for line in lines:
 
 for key in module_graph.keys():
     for node in module_graph[key][2]:
-        if node in module_graph.keys():
-            if module_graph[node][1] == 'C':
-                module_graph[node][3][key] = 'low'
+        if node in module_graph.keys() and module_graph[node][1] == 'C':
+            module_graph[node][3][key] = 'low'
 keys = set(module_graph.keys())
 for key in keys:
     for node in module_graph[key][2]:
